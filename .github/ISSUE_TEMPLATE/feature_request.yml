@@ -1,0 +1,32 @@
+name: Feature request
+description: Suggest a focused improvement or developer tool.
+title: "enhancement: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: "Please search existing issues first. Focus on the problem and the outcome that would help users."
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem should this solve?
+      description: Describe the task or friction you run into.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Explain the behavior you would like. A specific implementation is optional.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Optional. Mention existing workarounds or other approaches.
+  - type: textarea
+    id: scope
+    attributes:
+      label: Example input and expected output
+      description: Optional, but helpful for HTML transformation tools.
