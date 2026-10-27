@@ -70,8 +70,14 @@ npm run test:coverage
 
 Every CI run publishes the coverage report as a downloadable artifact and displays Statements, Branches, Functions, and Lines coverage in the GitHub Actions job summary. Successful `main` runs also update the coverage badge above automatically.
 
+## Contributing
+
+DeHTML welcomes focused bug fixes, tests, documentation improvements, and new tool ideas. See [CONTRIBUTING.md](CONTRIBUTING.md) for local setup, checks, and pull request guidance. Use the [open issues](https://github.com/Aaqibhafeezkhan/DeHTML/issues) to find work, or open a [bug report](https://github.com/Aaqibhafeezkhan/DeHTML/issues/new?template=bug_report.yml) or [feature request](https://github.com/Aaqibhafeezkhan/DeHTML/issues/new?template=feature_request.yml).
+
+## License
+
+DeHTML is distributed under the [MIT License](LICENSE).
+
 ## Legacy Support
 
 The previous vanilla JavaScript implementation is preserved in the `/legacy` folder and remains accessible via the `/legacy/index.html` path in production.
-
----

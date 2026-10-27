@@ -1,0 +1,49 @@
+name: Bug report
+description: Report a reproducible problem in DeHTML.
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for helping improve DeHTML. Please search existing issues first and avoid including private data or secrets."
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the problem clearly.
+      placeholder: The formatter changes...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Include a minimal HTML/text example when possible.
+      placeholder: |
+        1. Open...
+        2. Paste...
+        3. Select...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and environment
+      description: Browser/version, operating system, and whether this happens in the deployed app or local development.
+  - type: textarea
+    id: sample
+    attributes:
+      label: Minimal example or screenshots
+      description: Optional. Remove personal information, credentials, and other sensitive content.
