@@ -61,10 +61,13 @@ Output: <div><span> hi </span></div>
 **Previewer** — the editor's HTML, CSS, and JS are rendered live in a sandboxed iframe. Script and style tags execute inside the preview; they are not sanitized, but the iframe sandbox (scripts allowed, same-origin not) keeps them isolated from the host page:
 
 ```html
-<h1>Hello</h1>
+<h1 id="title">Hello</h1>
 <style>
   h1 { color: hotpink; }
 </style>
+<script>
+  document.getElementById('title').textContent = 'Hello from JS!';
+</script>
 ```
 
 ## Getting Started
