@@ -70,6 +70,7 @@ export default function MinifierTool() {
             <button 
               key={t}
               onClick={() => setType(t)}
+              aria-label={`${t.toUpperCase()} minification mode`}
               className={type === t ? styles.btnPrimary : styles.btnSecondary}
               style={{ padding: '0.4rem 1rem', fontSize: '0.8rem' }}
             >
@@ -86,8 +87,9 @@ export default function MinifierTool() {
       
       <div className={styles.editorGrid}>
         <div className={styles.inputGroup}>
-          <label className={styles.label}>Original {type.toUpperCase()} Code</label>
+          <label className={styles.label} htmlFor="minifier-input">Original {type.toUpperCase()} Code</label>
           <textarea
+            id="minifier-input"
             className={styles.textarea}
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -95,8 +97,9 @@ export default function MinifierTool() {
           />
         </div>
         <div className={styles.inputGroup}>
-          <label className={styles.label}>Minified Result</label>
+          <label className={styles.label} htmlFor="minifier-output">Minified Result</label>
           <textarea
+            id="minifier-output"
             className={styles.textarea}
             value={output}
             readOnly
