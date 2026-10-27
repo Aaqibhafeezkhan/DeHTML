@@ -10,8 +10,6 @@ A modern, fast, and secure toolkit for HTML manipulation built with React and Vi
 - **Encode / Decode Entities**: Easily convert special characters to HTML entities and back.
 - **Diff Viewer**: Compare two blocks of text or code line-by-line.
 - **Formatter**: Clean up and beautify messy HTML code.
-- **Minifier**: Remove comments and collapse whitespace in HTML, CSS, or JS.
-- **Previewer**: Render your markup live in a sandboxed iframe.
 
 ### Tool examples
 
@@ -29,10 +27,10 @@ Encode: <div>A & B</div>              ->  &lt;div&gt;A &amp; B&lt;/div&gt;
 Decode: &lt;strong&gt;Hello&lt;/strong&gt;  ->  <strong>Hello</strong>
 ```
 
-**Diff Viewer** — line-by-line comparison; removed lines are prefixed with `- `, added lines with `+ `. Original `same\nold` vs modified `same\nnew\nextra`:
+**Diff Viewer** — line-by-line comparison; unchanged lines are shown with a two-space prefix, removed lines get `- `, added lines get `+ `. Original `same\nold` vs modified `same\nnew\nextra`:
 
 ```text
-same
+  same
 - old
 + new
 + extra
