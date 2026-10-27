@@ -11,6 +11,65 @@ A modern, fast, and secure toolkit for HTML manipulation built with React and Vi
 - **Diff Viewer**: Compare two blocks of text or code line-by-line.
 - **Formatter**: Clean up and beautify messy HTML code.
 
+### Tool examples
+
+**Strip Tags** — tags removed, plain text extracted:
+
+```text
+Input:  <p>Hello <b>World</b></p>
+Output: Hello World
+```
+
+**Encode / Decode** — entities have two directions:
+
+```text
+Encode: <div>A & B</div>              ->  &lt;div&gt;A &amp; B&lt;/div&gt;
+Decode: &lt;strong&gt;Hello&lt;/strong&gt;  ->  <strong>Hello</strong>
+```
+
+**Diff Viewer** — line-by-line comparison; unchanged lines are shown with a two-space prefix, removed lines get `- `, added lines get `+ `. Original `same\nold` vs modified `same\nnew\nextra`:
+
+```text
+  same
+- old
++ new
++ extra
+```
+
+**Formatter** — messy HTML is re-emitted indented, no changes to tags themselves:
+
+```html
+<div><p>Hello</p><img src="x"></div>
+```
+
+Result:
+
+```html
+<div>
+  <p>Hello</p>
+  <img src="x">
+</div>
+```
+
+**Minifier** — comments removed and whitespace collapsed (in HTML mode all whitespace, including inside text, collapses to single spaces). Separate modes handle CSS and JS:
+
+```text
+Input:  <div>  <!-- comment --> <span> hi </span> </div>
+Output: <div><span> hi </span></div>
+```
+
+**Previewer** — the editor's HTML, CSS, and JS are rendered live in a sandboxed iframe. Script and style tags execute inside the preview; they are not sanitized, but the iframe sandbox (scripts allowed, same-origin not) keeps them isolated from the host page:
+
+```html
+<h1 id="title">Hello</h1>
+<style>
+  h1 { color: hotpink; }
+</style>
+<script>
+  document.getElementById('title').textContent = 'Hello from JS!';
+</script>
+```
+
 ## Getting Started
 
 ### Prerequisites
