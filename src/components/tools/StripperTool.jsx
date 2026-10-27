@@ -53,8 +53,9 @@ const StripperTool = ({ input, setInput, output, setOutput }) => {
     <div className={styles.container}>
       <div className={styles.editorGrid}>
         <div className={styles.inputGroup}>
-          <label className={styles.label}>Input HTML:</label>
+          <label className={styles.label} htmlFor="stripper-input">Input HTML:</label>
           <textarea 
+            id="stripper-input"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Paste your HTML here..."
@@ -63,8 +64,9 @@ const StripperTool = ({ input, setInput, output, setOutput }) => {
         </div>
         
         <div className={styles.inputGroup}>
-          <label className={styles.label}>Plain Text Output:</label>
+          <label className={styles.label} htmlFor="stripper-output">Plain Text Output:</label>
           <textarea 
+            id="stripper-output"
             value={output}
             readOnly
             placeholder="Stripped text will appear here..."

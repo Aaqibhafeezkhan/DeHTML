@@ -71,8 +71,9 @@ const EncoderTool = () => {
 
       <div className={styles.editorGrid}>
         <div className={styles.inputGroup}>
-          <label className={styles.label}>Input Text:</label>
+          <label className={styles.label} htmlFor="encoder-input">Input Text:</label>
           <textarea 
+            id="encoder-input"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={`Paste your text to ${mode} here...`}
@@ -81,8 +82,9 @@ const EncoderTool = () => {
         </div>
         
         <div className={styles.inputGroup}>
-          <label className={styles.label}>Output Text:</label>
+          <label className={styles.label} htmlFor="encoder-output">Output Text:</label>
           <textarea 
+            id="encoder-output"
             value={output}
             readOnly
             className={styles.textarea}

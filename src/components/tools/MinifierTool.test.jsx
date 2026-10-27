@@ -26,12 +26,12 @@ describe('MinifierTool', () => {
 
   it('minifies css and js', () => {
     renderTool()
-    fireEvent.click(screen.getByRole('button', { name: 'CSS' }))
+    fireEvent.click(screen.getByRole('button', { name: 'CSS minification mode' }))
     fireEvent.change(screen.getByPlaceholderText('Paste your CSS here...'), { target: { value: 'a { color: red; padding: 0 1px; }' } })
     fireEvent.click(screen.getByRole('button', { name: 'Minify Code' }))
     expect(screen.getByPlaceholderText('Minified output will appear here...')).toHaveValue('a{color:red;padding:0 1px;}')
 
-    fireEvent.click(screen.getByRole('button', { name: 'JS' }))
+    fireEvent.click(screen.getByRole('button', { name: 'JS minification mode' }))
     fireEvent.change(screen.getByPlaceholderText('Paste your JS here...'), { target: { value: 'const x = 1 + 2; // comment' } })
     fireEvent.click(screen.getByRole('button', { name: 'Minify Code' }))
     expect(screen.getByPlaceholderText('Minified output will appear here...')).toHaveValue('const x=1+2;')

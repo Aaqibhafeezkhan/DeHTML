@@ -8,8 +8,9 @@ export default function PreviewerTool() {
     <div className={styles.container}>
       <div className={styles.editorGrid}>
         <div className={styles.inputGroup}>
-          <label className={styles.label}>HTML / CSS / JS Code</label>
+          <label className={styles.label} htmlFor="previewer-code">HTML / CSS / JS Code</label>
           <textarea
+            id="previewer-code"
             className={styles.textarea}
             value={code}
             onChange={(e) => setCode(e.target.value)}

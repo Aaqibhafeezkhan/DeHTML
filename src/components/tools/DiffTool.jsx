@@ -37,8 +37,9 @@ const DiffTool = () => {
     <div className={styles.container}>
       <div className={styles.editorGrid}>
         <div className={styles.inputGroup}>
-          <label className={styles.label}>Original Text:</label>
+          <label className={styles.label} htmlFor="diff-original">Original Text:</label>
           <textarea 
+            id="diff-original"
             value={text1}
             onChange={(e) => setText1(e.target.value)}
             placeholder="Paste original text here..."
@@ -47,8 +48,9 @@ const DiffTool = () => {
         </div>
         
         <div className={styles.inputGroup}>
-          <label className={styles.label}>Modified Text:</label>
+          <label className={styles.label} htmlFor="diff-modified">Modified Text:</label>
           <textarea 
+            id="diff-modified"
             value={text2}
             onChange={(e) => setText2(e.target.value)}
             placeholder="Paste modified text here..."
@@ -73,8 +75,8 @@ const DiffTool = () => {
       </div>
 
       {diffResult && (
-        <div className={styles.resultArea}>
-          <h3 className={styles.label} style={{ marginBottom: '1rem' }}>Difference Output:</h3>
+        <div className={styles.resultArea} role="region" aria-labelledby="diff-output-heading">
+          <h3 id="diff-output-heading" className={styles.label} style={{ marginBottom: '1rem' }}>Difference Output:</h3>
           {diffResult.map((line, idx) => (
             <div 
               key={idx} 

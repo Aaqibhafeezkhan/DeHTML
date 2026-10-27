@@ -66,8 +66,9 @@ const FormatterTool = () => {
     <div className={styles.container}>
       <div className={styles.editorGrid}>
         <div className={styles.inputGroup}>
-          <label className={styles.label}>Input HTML:</label>
+          <label className={styles.label} htmlFor="formatter-input">Input HTML:</label>
           <textarea 
+            id="formatter-input"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Paste your unformatted HTML here..."
@@ -76,8 +77,9 @@ const FormatterTool = () => {
         </div>
         
         <div className={styles.inputGroup}>
-          <label className={styles.label}>Formatted HTML:</label>
+          <label className={styles.label} htmlFor="formatter-output">Formatted HTML:</label>
           <textarea 
+            id="formatter-output"
             value={output}
             readOnly
             placeholder="Formatted output will appear here..."
