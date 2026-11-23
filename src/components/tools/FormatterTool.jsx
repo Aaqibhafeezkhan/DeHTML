@@ -6,11 +6,12 @@ const FormatterTool = () => {
   const { addToast } = useToast();
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
+  const [indentWidth, setIndentWidth] = useState(2);
 
   const formatHtml = (html) => {
     let formatted = '';
     let indent = '';
-    const tab = '  ';
+    const tab = ' '.repeat(indentWidth);
     
     html.split(/>\s*</).forEach(function(element) {
       if (element.match(/^\/\w/)) {
@@ -87,6 +88,21 @@ const FormatterTool = () => {
           />
         </div>
       </div>
+
+      <fieldset className={styles.indentOptions}>
+        <legend className={styles.label}>Indentation</legend>
+        {[2, 4].map(width => (
+          <label key={width}>
+            <input
+              type="radio"
+              name="formatter-indent"
+              checked={indentWidth === width}
+              onChange={() => setIndentWidth(width)}
+            />
+            {width} spaces
+          </label>
+        ))}
+      </fieldset>
 
       <div className={styles.actions}>
         <button 

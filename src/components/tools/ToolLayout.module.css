@@ -52,6 +52,21 @@
   background: var(--bg-base);
 }
 
+.indentOptions {
+  display: flex;
+  gap: 1rem;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.indentOptions label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
 .actions {
   display: flex;
   gap: 1rem;

@@ -83,7 +83,7 @@ Input:
 <div><p>Hello</p><img src="example.png"></div>
 ```
 
-The Formatter adds indentation and line breaks to make the markup easier to inspect. Its output is a readability aid, not a standards-compliant HTML parser or formatter.
+The Formatter uses two spaces per level by default. Select **4 spaces** before formatting to use a wider indent. Its output is a readability aid, not a standards-compliant HTML parser or formatter.
 
 ### Minify code
 
