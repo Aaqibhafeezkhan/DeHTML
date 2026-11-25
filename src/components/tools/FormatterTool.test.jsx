@@ -48,6 +48,7 @@ describe('FormatterTool', () => {
     await user.click(format)
     expect(output).toHaveValue('<main>\n    <section>\n        <p>Text</p>\n    </section>\n    <hr>\n</main>')
 
+    await user.click(fourSpaces)
     await user.keyboard('{ArrowLeft}')
     expect(twoSpaces).toBeChecked()
     await user.click(format)
