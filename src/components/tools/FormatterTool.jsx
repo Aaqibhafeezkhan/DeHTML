@@ -13,14 +13,14 @@ const FormatterTool = () => {
       'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
       'link', 'meta', 'param', 'source', 'track', 'wbr',
     ]);
-    const tokens = html.match(/<!--[\\s\\S]*?-->|<![^>]*>|<\\/?[a-zA-Z][^>]*>|[^<]+|</g) || [];
+    const tokens = html.match(/<!--[\s\S]*?-->|<![^>]*>|<\/?[a-zA-Z][^>]*>|[^<]+|</g) || [];
     const lines = [];
     let depth = 0;
 
     for (let index = 0; index < tokens.length; index += 1) {
       const token = tokens[index];
-      const closing = token.match(/^<\\/([a-zA-Z][\\w:-]*)/);
-      const opening = token.match(/^<([a-zA-Z][\\w:-]*)\\b[^>]*>$/);
+      const closing = token.match(/^<\/([a-zA-Z][\w:-]*)/);
+      const opening = token.match(/^<([a-zA-Z][\w:-]*)\b[^>]*>$/);
       const tagName = (closing?.[1] || opening?.[1] || '').toLowerCase();
 
       if (closing) {
@@ -30,7 +30,7 @@ const FormatterTool = () => {
       }
 
       if (opening) {
-        const selfClosing = /\\/\\s*>$/.test(token);
+        const selfClosing = /\/\s*>$/.test(token);
         const isVoid = voidElements.has(tagName) || selfClosing;
         const nextText = tokens[index + 1];
         const nextClosing = tokens[index + 2];
