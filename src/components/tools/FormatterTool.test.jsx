@@ -28,6 +28,24 @@ describe('FormatterTool', () => {
     expect(output.value).toContain('<br>')
   })
 
+  it('defaults to two spaces and formats the same input with four on request', () => {
+    renderTool()
+    fireEvent.change(screen.getByLabelText('Input HTML:'), {
+      target: { value: '<main><section><p>Text</p></section><hr></main>' },
+    })
+    const format = screen.getByRole('button', { name: 'Format HTML' })
+    const output = screen.getByLabelText('Formatted HTML:')
+
+    fireEvent.click(format)
+    expect(output).toHaveValue('<main>\n  <section>\n    <p>Text</p>\n  </section>\n  <hr>\n</main>')
+    expect(screen.getByRole('group', { name: 'Indentation' })).toBeInTheDocument()
+    expect(screen.getByRole('radio', { name: '2 spaces' })).toBeChecked()
+
+    fireEvent.click(screen.getByRole('radio', { name: '4 spaces' }))
+    fireEvent.click(format)
+    expect(output).toHaveValue('<main>\n    <section>\n        <p>Text</p>\n    </section>\n    <hr>\n</main>')
+  })
+
   it('copies output and resets state', async () => {
     renderTool()
     fireEvent.change(screen.getByPlaceholderText('Paste your unformatted HTML here...'), { target: { value: '<p>Hello</p>' } })
