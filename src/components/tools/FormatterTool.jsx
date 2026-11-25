@@ -9,23 +9,53 @@ const FormatterTool = () => {
   const [indentWidth, setIndentWidth] = useState(2);
 
   const formatHtml = (html) => {
-    let formatted = '';
-    let indent = '';
-    const tab = ' '.repeat(indentWidth);
-    
-    html.split(/>\s*</).forEach(function(element) {
-      if (element.match(/^\/\w/)) {
-        indent = indent.substring(tab.length);
+    const voidElements = new Set([
+      'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
+      'link', 'meta', 'param', 'source', 'track', 'wbr',
+    ]);
+    const tokens = html.match(/<!--[\s\S]*?-->|<![^>]*>|<\/?[a-zA-Z][^>]*>|[^<]+|</g) || [];
+    const lines = [];
+    let depth = 0;
+
+    for (let index = 0; index < tokens.length; index += 1) {
+      const token = tokens[index];
+      const closing = token.match(/^<\/([a-zA-Z][\w:-]*)/);
+      const opening = token.match(/^<([a-zA-Z][\w:-]*)\b[^>]*>$/);
+      const tagName = (closing?.[1] || opening?.[1] || '').toLowerCase();
+
+      if (closing) {
+        depth = Math.max(0, depth - 1);
+        lines.push(' '.repeat(depth * indentWidth) + token);
+        continue;
       }
-      
-      formatted += indent + '<' + element + '>\r\n';
-      
-      if (element.match(/^<?\w[^>]*[^/]$/) && !element.startsWith("input") && !element.startsWith("img") && !element.startsWith("br") && !element.startsWith("hr")) { 
-        indent += tab;              
+
+      if (opening) {
+        const selfClosing = /\/\s*>$/.test(token);
+        const isVoid = voidElements.has(tagName) || selfClosing;
+        const nextText = tokens[index + 1];
+        const nextClosing = tokens[index + 2];
+        const closesInline = !isVoid
+          && nextText
+          && !nextText.trim().startsWith('<')
+          && nextClosing
+          && nextClosing.toLowerCase().startsWith('</' + tagName);
+
+        if (closesInline) {
+          lines.push(' '.repeat(depth * indentWidth) + token + nextText + nextClosing);
+          index += 2;
+        } else {
+          lines.push(' '.repeat(depth * indentWidth) + token);
+          if (!isVoid) depth += 1;
+        }
+        continue;
       }
-    });
-    
-    return formatted.substring(1, formatted.length - 3);
+
+      if (token.trim()) {
+        lines.push(' '.repeat(depth * indentWidth) + token.trim());
+      }
+    }
+
+    return lines.join('\n');
   };
 
   const handleFormat = () => {
